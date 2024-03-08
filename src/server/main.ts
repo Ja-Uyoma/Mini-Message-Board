@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Express, Request, Response } from "express";
 import ViteExpress from "vite-express";
 
 const messages = [
@@ -14,13 +14,13 @@ const messages = [
   },
 ];
 
-const app = express();
+const app: Express = express();
 
-app.get("/api/messages", (req, res) => {
+app.get("/api/messages", (req: Request, res: Response) => {
   res.json(messages);
 });
 
-app.get("/api/messages/:messageID", (req, res) => {
+app.get("/api/messages/:messageID", (req: Request, res: Response) => {
   const id = Number(req.params.messageID);
 
   if (id >= messages.length) {
