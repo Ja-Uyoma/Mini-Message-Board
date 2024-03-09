@@ -11,16 +11,22 @@ type Message = {
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/messages", { mode: "cors" })
       .then((res) => { if (res.status >= 400) { throw new Error("Internal server error"); } return res.json(); })
       .then((res) => { setMessages(res); console.log(res); })
-      .catch((err) => setError(err));
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
 
   if (error) {
     return <p>A network error was encountered</p>;
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
   return (
