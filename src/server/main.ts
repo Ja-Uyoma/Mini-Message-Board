@@ -43,7 +43,7 @@ app.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
 
     const { text, user }: { text: string; user: string } = req.body;
