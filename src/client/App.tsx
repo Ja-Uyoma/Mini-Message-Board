@@ -10,13 +10,18 @@ type Message = {
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("/api/messages", { mode: "cors" })
-      .then((res) => res.json())
+      .then((res) => { if (res.status >= 400) { throw new Error("Internal server error"); } return res.json(); })
       .then((res) => { setMessages(res); console.log(res); })
-      .catch((err) => console.error(err));
+      .catch((err) => setError(err));
   }, []);
+
+  if (error) {
+    return <p>A network error was encountered</p>;
+  }
 
   return (
     <div className="App">
