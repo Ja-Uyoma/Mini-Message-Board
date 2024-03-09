@@ -2,8 +2,14 @@ import "./App.css";
 
 import React, {useEffect, useState} from "react";
 
+type Message = {
+  text: string,
+  user: string,
+  added: Date
+};
+
 function App() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     const getter = async () => {
