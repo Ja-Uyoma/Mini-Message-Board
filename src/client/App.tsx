@@ -12,19 +12,10 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
-    const getter = async () => {
-      try {
-        const res = await fetch("/api/messages");
-        const data = await res.json();
-        console.log(data);
-        setMessages(data);
-      }
-      catch (err) {
-        console.error(err);
-      }
-    };
-
-    getter();
+    fetch("/api/messages", { mode: "cors" })
+      .then((res) => res.json())
+      .then((res) => { setMessages(res); console.log(res); })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
