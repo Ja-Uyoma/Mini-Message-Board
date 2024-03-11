@@ -2,18 +2,7 @@ import express, { Express, Request, Response } from "express";
 import ViteExpress from "vite-express";
 import { body, validationResult } from "express-validator";
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+import messages from "./messages.js";
 
 const app: Express = express();
 
