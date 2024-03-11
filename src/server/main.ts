@@ -1,9 +1,7 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import ViteExpress from "vite-express";
-import { body, validationResult } from "express-validator";
 
 import { router } from "./router.js";
-import messages from "./messages.js";
 
 const app: Express = express();
 
