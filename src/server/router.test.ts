@@ -9,6 +9,10 @@ app.use("/api", router);
 
 describe("GET /api/messages", function () {
   it("responds with JSON", function (done) {
-    supertest(app).get("/messages").expect("Content-Type", /json/).expect(200, done);
+    supertest(app)
+      .get("/messages")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200, done);
   });
 });
