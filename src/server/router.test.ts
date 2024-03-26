@@ -1,7 +1,7 @@
 import express from "express";
 import { describe, it } from "vitest";
 import { agent } from "supertest";
-import { router } from "./router";
+import { router } from "./router.ts";
 
 const app = express();
 
