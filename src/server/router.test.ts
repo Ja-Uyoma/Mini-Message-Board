@@ -1,13 +1,7 @@
-import express from "express";
 import { describe, expect, test } from "vitest";
 import supertest from "supertest";
-import { router } from "./router.ts";
+import app from "./main.ts";
 import messages from "./messages.ts";
-
-const app = express();
-
-app.use(express.json());
-app.use("/api", router);
 
 describe("GET /api/messages", function () {
   test("responds with the messages in JSON", function () {
