@@ -3,8 +3,8 @@ import supertest from "supertest";
 import app from "./main.ts";
 import messages from "./messages.ts";
 
-describe("GET /api/messages", function () {
-  test("responds with the messages in JSON", function () {
+describe("Returns the messages in the message object", function () {
+  test("GET /api/message returns all messages", function () {
     supertest(app)
       .get("/api/messages")
       .set("Accept", "application/json")
@@ -15,10 +15,8 @@ describe("GET /api/messages", function () {
         expect(res.body).toEqual(messages);
       })
   });
-});
 
-describe("GET /api/messages/:messageID", function () {
-  test("returns the first message", function () {
+  test("GET /api/messages/1 returns the first message", function () {
     supertest(app)
       .get("/api/messages/1")
       .set("Accept", "application/json")
@@ -30,7 +28,7 @@ describe("GET /api/messages/:messageID", function () {
       });
   });
 
-  test("returns the second message", function () {
+  test("GET /api/messages/2 returns the second message", function () {
     supertest(app)
       .get("/api/messages/2")
       .set("Accept", "application/json")
@@ -42,7 +40,7 @@ describe("GET /api/messages/:messageID", function () {
       });
   });
 
-  test("handles retrieval of non-existent messages", function () {
+  test("GET /api/messages/100 handles retrieval of non-existent message", function () {
     supertest(app)
       .get("/api/messages/100")
       .set("Accept", "application/json")
@@ -50,7 +48,7 @@ describe("GET /api/messages/:messageID", function () {
       .expect(400)
       .then((res) => {
         expect(res.body).toBeDefined();
-        expect(res.body).toEqual({message: "Message does not exist"});
-      })
+        expect(res.body).toEqual({ message: "Message does not exist" });
+      });
   });
 });
