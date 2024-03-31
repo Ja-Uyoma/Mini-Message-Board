@@ -33,7 +33,7 @@ router.post(
 
     const { text, user }: { text: string; user: string } = req.body;
 
-    messages.push({ text: text, user: user, added: new Date() });
+    messages.push({ text: text, user: user, added: new Date().toString() });
     res.json(messages[messages.length - 1]);
   }
 );
