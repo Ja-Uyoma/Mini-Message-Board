@@ -5,17 +5,17 @@ import messages from "./messages.js";
 const router = express.Router();
 
 router.get("/messages", (req: Request, res: Response) => {
-  res.json(messages);
+  return res.json(messages);
 });
 
 router.get("/messages/:messageID", (req: Request, res: Response) => {
   const id = Number(req.params.messageID);
 
   if (id > messages.length) {
-    res.status(400).json({ message: "Message does not exist" });
+    return res.status(400).json({ message: "Message does not exist" });
   }
 
-  res.json(messages[id - 1]);
+  return res.json(messages[id - 1]);
 });
 
 router.post(
@@ -34,7 +34,7 @@ router.post(
     const { text, user }: { text: string; user: string } = req.body;
 
     messages.push({ text: text, user: user, added: new Date().toString() });
-    res.json(messages[messages.length - 1]);
+    return res.json(messages[messages.length - 1]);
   }
 );
 
