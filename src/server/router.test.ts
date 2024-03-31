@@ -17,6 +17,7 @@ describe("GET /api/messages", function () {
       .expect("Content-Type", /json/)
       .expect(200)
       .then((res) => {
+        expect(res.body).toBeDefined();
         expect(res.body).toEqual(messages);
       });
   });
