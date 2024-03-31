@@ -19,6 +19,32 @@ describe("GET /api/messages", function () {
       .then((res) => {
         expect(res.body).toBeDefined();
         expect(res.body).toEqual(messages);
+      })
+  });
+});
+
+describe("GET /api/messages/:messageID", function () {
+  test("returns the first message", function () {
+    supertest(app)
+      .get("/api/messages/1")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toBeDefined();
+        expect(res.body).toEqual(messages[0]);
+      });
+  });
+
+  test("returns the second message", function () {
+    supertest(app)
+      .get("/api/messages/2")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toBeDefined();
+        expect(res.body).toEqual(messages[1]);
       });
   });
 });
