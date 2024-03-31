@@ -6,6 +6,7 @@ import messages from "./messages.ts";
 
 const app = express();
 
+app.use(express.json());
 app.use("/api", router);
 
 describe("GET /api/messages", function () {
