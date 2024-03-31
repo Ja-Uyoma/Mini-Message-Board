@@ -5,7 +5,7 @@ import messages from "./messages.ts";
 
 describe("Returns the messages in the message object", function () {
   test("GET /api/message returns all messages", function () {
-    supertest(app)
+    return supertest(app)
       .get("/api/messages")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
@@ -17,7 +17,7 @@ describe("Returns the messages in the message object", function () {
   });
 
   test("GET /api/messages/1 returns the first message", function () {
-    supertest(app)
+    return supertest(app)
       .get("/api/messages/1")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
@@ -29,7 +29,7 @@ describe("Returns the messages in the message object", function () {
   });
 
   test("GET /api/messages/2 returns the second message", function () {
-    supertest(app)
+    return supertest(app)
       .get("/api/messages/2")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
@@ -41,7 +41,7 @@ describe("Returns the messages in the message object", function () {
   });
 
   test("GET /api/messages/100 handles retrieval of non-existent message", function () {
-    supertest(app)
+    return supertest(app)
       .get("/api/messages/100")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
