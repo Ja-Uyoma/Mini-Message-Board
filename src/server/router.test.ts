@@ -12,7 +12,7 @@ app.use("/api", router);
 describe("GET /api/messages", function () {
   test("responds with the messages in JSON", function () {
     supertest(app)
-      .get("/messages")
+      .get("/api/messages")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
