@@ -52,3 +52,28 @@ describe("Returns the messages in the message object", function () {
       });
   });
 });
+
+describe("Create new messages", function () {
+  test("POST /api/messages fails to create an empty message", async function () {
+    const res = await supertest(app)
+      .post("/api/messages")
+      .send({ text: "", user: "" })
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/);
+
+    expect(res.status).toEqual(400);
+    expect(res.error).toBeDefined(); 
+  });
+
+  test("POST /api/messages creates a new message", function () {
+    return supertest(app)
+      .post("/api/messages")
+      .send({ text: "Amoso u ni okwe", user: "Mosh" })
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .then((res) => {
+        expect(res.status).toEqual(200);
+        expect(res.body).toBeDefined();
+      })
+  })
+});
