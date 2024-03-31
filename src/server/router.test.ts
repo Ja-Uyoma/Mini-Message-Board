@@ -58,9 +58,9 @@ describe("Create new messages", function () {
     const res = await supertest(app)
       .post("/api/messages")
       .send({ text: "", user: "" })
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/);
+      .set("Accept", "application/json");
 
+    expect(res.type).toBe("application/json");
     expect(res.status).toEqual(400);
     expect(res.error).toBeDefined(); 
   });
