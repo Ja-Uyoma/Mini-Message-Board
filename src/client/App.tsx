@@ -25,8 +25,16 @@ function App() {
   return (
     <div className="App">
       {
-        messages.length >= 1 ?  messages.map((msg, idx) => <p key={idx}>{msg.text} {msg.user} {new Date(msg.added).toLocaleDateString()} </p> ) : <p>No messages to display</p>
+        messages.length >= 1 ?  messages.map((msg, idx) => <Message text={msg.text} user={msg.user} added={msg.added} />) : <p>No messages to display</p>
       } 
+    </div>
+  );
+}
+
+function Message({ text, user, added }: Message) {
+  return (
+    <div>
+      {text} {user} {added}
     </div>
   );
 }
