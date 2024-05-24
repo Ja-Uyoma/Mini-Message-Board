@@ -1,10 +1,5 @@
 import React, {useEffect, useState} from "react";
-
-type Message = {
-  text: string,
-  user: string,
-  added: Date
-};
+import type { Message } from "./Message";
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
