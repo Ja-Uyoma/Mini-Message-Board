@@ -26,7 +26,7 @@ export function Messages() {
     fetch("/api/messages")
       .then((res) => { if (res.status >= 400) { throw new Error(res.statusText); } else { return res.json(); } })
       .then((messages) => { setMessages(messages); })
-      .catch((err) => { setError(err); })
+      .catch((err) => { setError(err); console.log(err); })
       .finally(() => { setIsLoading(false); } )
   }, []);
 
