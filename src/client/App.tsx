@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import type { Message } from "./Message";
+import type { Message } from "./Message.type";
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
