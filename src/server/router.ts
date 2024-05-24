@@ -31,7 +31,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { text, user }: { text: string; user: string } = req.body;
+    const { text, user }: { text: string, user: string } = req.body;
 
     messages.push({ text: text, user: user, added: new Date().toString() });
     return res.json(messages[messages.length - 1]);
