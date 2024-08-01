@@ -17,6 +17,14 @@ function Message({ text, user, added }: Message) {
   );
 }
 
+function NetworkError() {
+  return (
+    <div>
+      <p>A network error was encountered</p>
+    </div>
+  );
+}
+
 function Loading() {
   return (
     <div>
@@ -52,11 +60,7 @@ export function Messages() {
   }, []);
 
   if (error) {
-    return (
-      <div>
-        <p>A network error was encountered</p>
-      </div>
-    );
+    return <NetworkError />;
   }
 
   if (isLoading) {
