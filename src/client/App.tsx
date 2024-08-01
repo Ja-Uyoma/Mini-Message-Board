@@ -1,6 +1,24 @@
 import { Messages } from "./Messages";
 import { useState } from "react";
 
+function Form() {
+  return (
+    <form action="/api/messages" method="post">
+      <div>
+        <label htmlFor="text">Text</label>
+        <input type="text" name="text" id="text" />
+      </div>
+
+      <div>
+        <label htmlFor="user">User</label>
+        <input type="text" name="user" id="user" />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
 function Button() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,19 +34,7 @@ function Button() {
 
       <dialog open={isOpen}>
         Add a new message
-        <form action="/api/messages" method="post">
-          <div>
-            <label htmlFor="text">Text</label>
-            <input type="text" name="text" id="text" />
-          </div>
-
-          <div>
-            <label htmlFor="user">User</label>
-            <input type="text" name="user" id="user" />
-          </div>
-
-          <button type="submit">Submit</button>
-        </form>
+        <Form />
       </dialog>
     </>
   );
