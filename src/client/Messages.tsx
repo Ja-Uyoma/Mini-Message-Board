@@ -17,6 +17,14 @@ function Message({ text, user, added }: Message) {
   );
 }
 
+function Loading() {
+  return (
+    <div>
+      <p>Loading...</p>
+    </div>
+  );
+}
+
 export function Messages() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [error, setError] = useState(null);
@@ -52,11 +60,7 @@ export function Messages() {
   }
 
   if (isLoading) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
