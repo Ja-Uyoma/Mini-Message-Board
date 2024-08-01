@@ -1,13 +1,7 @@
-import "./App.css";
-
-import React from "react";
+import { Messages } from "./Messages"; 
 
 function App() {
-  return (
-    <div className="App">
-      <p>Hello World!</p>  
-    </div>
-  );
+  return <Messages />;
 }
 
 export default App;
