@@ -1,4 +1,4 @@
-import { Messages } from "./Messages"; 
+import { Messages } from "./Messages";
 
 function App() {
   return <Messages />;

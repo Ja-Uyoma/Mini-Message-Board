@@ -58,7 +58,7 @@ describe("Create new messages", function () {
 
     expect(res.type).toBe("application/json");
     expect(res.status).toEqual(400);
-    expect(res.error).toBeDefined(); 
+    expect(res.error).toBeDefined();
   });
 
   test("POST /api/messages creates a new message", async function () {

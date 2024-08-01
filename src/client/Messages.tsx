@@ -2,9 +2,9 @@ import { z } from "zod";
 import { useState, useEffect } from "react";
 
 const MessageSchema = z.object({
-    text: z.string(),
-    user: z.string(),
-    added: z.string().date(),
+  text: z.string(),
+  user: z.string(),
+  added: z.string().date(),
 });
 
 type Message = z.infer<typeof MessageSchema>;
@@ -24,10 +24,23 @@ export function Messages() {
 
   useEffect(() => {
     fetch("/api/messages")
-      .then((res) => { if (res.status >= 400) { throw new Error(res.statusText); } else { return res.json(); } })
-      .then((messages) => { setMessages(messages); })
-      .catch((err) => { setError(err); console.log(err); })
-      .finally(() => { setIsLoading(false); } )
+      .then((res) => {
+        if (res.status >= 400) {
+          throw new Error(res.statusText);
+        } else {
+          return res.json();
+        }
+      })
+      .then((messages) => {
+        setMessages(messages);
+      })
+      .catch((err) => {
+        setError(err);
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   if (error) {
@@ -48,7 +61,18 @@ export function Messages() {
 
   return (
     <div>
-      { messages.length >= 1 ? messages.map((msg, idx) => <Message key={idx} text={msg.text} user={msg.user} added={msg.added} />) : <p>No messages to display</p> }
+      {messages.length >= 1 ? (
+        messages.map((msg, idx) => (
+          <Message
+            key={idx}
+            text={msg.text}
+            user={msg.user}
+            added={msg.added}
+          />
+        ))
+      ) : (
+        <p>No messages to display</p>
+      )}
     </div>
   );
 }
