@@ -1,4 +1,4 @@
-import { Messages } from "./components/Messages";
+import { Messages } from "./Messages";
 import { useState } from "react";
 
 function Form() {
