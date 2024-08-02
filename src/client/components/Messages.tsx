@@ -1,13 +1,6 @@
 import Message from "./Message";
+import NetworkError from "./NetworkError";
 import { useState, useEffect } from "react";
-
-function NetworkError() {
-  return (
-    <div>
-      <p>A network error was encountered</p>
-    </div>
-  );
-}
 
 function Loading() {
   return (
