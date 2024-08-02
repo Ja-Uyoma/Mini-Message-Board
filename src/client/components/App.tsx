@@ -12,7 +12,9 @@ function App() {
         <Dialog />
       </main>
       <footer>
-        <p>Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans</p>
+        <p className="text-lg font-medium">
+          Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans
+        </p>
       </footer>
     </div>
   );
