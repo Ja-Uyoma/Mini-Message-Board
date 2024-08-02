@@ -1,14 +1,7 @@
 import Message from "./Message";
 import NetworkError from "./NetworkError";
+import Loading from "./Loading";
 import { useState, useEffect } from "react";
-
-function Loading() {
-  return (
-    <div>
-      <p>Loading...</p>
-    </div>
-  );
-}
 
 export function Messages() {
   const [messages, setMessages] = useState<Message[]>([]);
