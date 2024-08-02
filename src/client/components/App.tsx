@@ -4,8 +4,8 @@ import Dialog from "./Dialog";
 function App() {
   return (
     <div>
-      <header>
-        <h1>Mini Message Board</h1>
+      <header className="my-3">
+        <h1 className="text-2xl">Mini Message Board</h1>
       </header>
       <main>
         <Messages />
