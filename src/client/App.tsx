@@ -42,10 +42,18 @@ function Button() {
 
 function App() {
   return (
-    <main>
-      <Messages />
-      <Button />
-    </main>
+    <>
+      <header>
+        <h1>Mini Message Board</h1>
+      </header>
+      <main>
+        <Messages />
+        <Button />
+      </main>
+      <footer>
+        <p>Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans</p>
+      </footer>
+    </>
   );
 }
 
