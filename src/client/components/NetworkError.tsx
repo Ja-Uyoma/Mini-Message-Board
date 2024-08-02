@@ -1,7 +1,7 @@
 function NetworkError() {
   return (
-    <div>
-      <p>A network error was encountered</p>
+    <div className="flex justify-center">
+      <p className="text-2xl">A network error was encountered</p>
     </div>
   );
 }
