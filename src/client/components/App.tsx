@@ -3,11 +3,12 @@ import Dialog from "./Dialog";
 
 function App() {
   return (
-    <div className="w-2/4 my-0 mx-auto">
+    <div>
       <header className="my-3">
-        <h1 className="text-2xl">Mini Message Board</h1>
+        <h1 className="text-2xl text-center">Mini Message Board</h1>
       </header>
-      <main>
+      <main className="w-2/4 my-0 mx-auto">
+        <h2 className="text-xl">Messages</h2>
         <Messages />
         <Dialog />
       </main>
