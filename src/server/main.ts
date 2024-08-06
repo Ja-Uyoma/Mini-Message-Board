@@ -7,9 +7,12 @@ import { router } from "./router.js";
 const app: Express = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 app.use("/api", router);
 
-ViteExpress.listen(app, 3000, () => console.log("Server is listening on port 3000..."));
+ViteExpress.listen(app, 3000, () =>
+  console.log("Server is listening on port 3000...")
+);
 
 export default app;
