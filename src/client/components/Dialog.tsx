@@ -30,7 +30,11 @@ function Dialog() {
 
   return (
     <div>
-      <button type="button" onClick={onClickHandler} className="btn btn-info">
+      <button
+        type="button"
+        onClick={onClickHandler}
+        className="btn btn-info mb-3"
+      >
         Add a new message
       </button>
 
