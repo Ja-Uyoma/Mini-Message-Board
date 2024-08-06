@@ -11,10 +11,12 @@ function App() {
         <Messages />
         <Dialog />
       </main>
-      <footer>
-        <p className="text-lg font-medium">
-          Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans
-        </p>
+      <footer className="footer footer-center bg-base-300 text-base-content p-4">
+        <aside>
+          <p>
+            Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans
+          </p>
+        </aside>
       </footer>
     </div>
   );
