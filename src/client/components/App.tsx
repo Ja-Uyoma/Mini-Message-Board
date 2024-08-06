@@ -3,7 +3,7 @@ import Dialog from "./Dialog";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <header className="my-3">
         <h1 className="text-2xl text-center">Mini Message Board</h1>
       </header>
@@ -12,7 +12,7 @@ function App() {
         <Messages />
         <Dialog />
       </main>
-      <footer className="footer footer-center bg-base-300 text-base-content p-4">
+      <footer className="footer footer-center bg-base-300 text-base-content p-4 mt-auto">
         <aside>
           <p>
             Copyright &copy; 2023 Mini Message Board. Created By Jimmy Givans
