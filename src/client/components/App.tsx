@@ -3,7 +3,7 @@ import Dialog from "./Dialog";
 
 function App() {
   return (
-    <div>
+    <div className="w-2/4 my-0 mx-auto">
       <header className="my-3">
         <h1 className="text-2xl">Mini Message Board</h1>
       </header>
