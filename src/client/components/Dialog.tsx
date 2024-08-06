@@ -30,24 +30,42 @@ function Dialog() {
 
   return (
     <div>
-      <button type="button" onClick={onClickHandler}>
+      <button type="button" onClick={onClickHandler} className="btn btn-info">
         Add a new message
       </button>
 
-      <dialog ref={dialogRef} onKeyDown={onEscapeKeyPressed}>
-        <form action="/api/messages" method="post">
-          <div>
-            <label htmlFor="text">Text</label>
-            <input type="text" name="text" id="text" />
-          </div>
+      <dialog ref={dialogRef} onKeyDown={onEscapeKeyPressed} className="modal">
+        <div className="modal-box">
+          <form action="/api/messages" method="post">
+            <div className="my-1">
+              <label htmlFor="text" className="form-control w-full max-w-xs">
+                Text
+                <input
+                  type="text"
+                  name="text"
+                  id="text"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
+            </div>
 
-          <div>
-            <label htmlFor="user">User</label>
-            <input type="text" name="user" id="user" />
-          </div>
+            <div>
+              <label htmlFor="user" className="form-control w-full max-w-xs">
+                User
+                <input
+                  type="text"
+                  name="user"
+                  id="user"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
+            </div>
 
-          <button type="submit">Submit</button>
-        </form>
+            <button type="submit" className="btn btn-info mt-1.5">
+              Submit
+            </button>
+          </form>
+        </div>
       </dialog>
     </div>
   );
