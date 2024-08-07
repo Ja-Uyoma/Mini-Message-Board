@@ -45,6 +45,7 @@ function Dialog() {
               <label htmlFor="text" className="form-control w-full max-w-xs">
                 Text
                 <input
+                  required
                   type="text"
                   name="text"
                   id="text"
@@ -57,6 +58,7 @@ function Dialog() {
               <label htmlFor="user" className="form-control w-full max-w-xs">
                 User
                 <input
+                  required
                   type="text"
                   name="user"
                   id="user"
