@@ -1,5 +1,5 @@
-import { Messages } from "./Messages";
-import Dialog from "./Dialog";
+import { Messages } from "../components/Messages";
+import Dialog from "../components/Dialog";
 
 function Root() {
   return (
