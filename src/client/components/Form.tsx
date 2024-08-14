@@ -49,6 +49,7 @@ const Form: React.FC = () => {
             name="text"
             id="text"
             className="input input-bordered w-full max-w-xs"
+            required
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
@@ -63,6 +64,7 @@ const Form: React.FC = () => {
             name="user"
             id="user"
             className="input input-bordered w-full max-w-xs"
+            required
             value={user}
             onChange={(e) => setUser(e.target.value)}
           />
