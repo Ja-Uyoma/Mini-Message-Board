@@ -5,6 +5,17 @@ import Dialog from "../components/Dialog";
 import NetworkError from "../components/NetworkError";
 import Loading from "../components/Loading";
 
+export async function loader() {
+  const response = await fetch("/api/messages", { method: "GET" });
+
+  if (response.status >= 400) {
+    throw new Error(response.statusText);
+  }
+
+  const messages = await response.json();
+  return messages;
+}
+
 function Root() {
   const [messages, setMessages] = React.useState<Message[]>([]);
   const [error, setError] = React.useState<Error | null>(null);
