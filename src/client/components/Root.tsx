@@ -1,7 +1,7 @@
 import { Messages } from "./Messages";
 import Dialog from "./Dialog";
 
-function App() {
+function Root() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="my-3">
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Root;
