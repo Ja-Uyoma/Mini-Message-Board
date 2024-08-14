@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Form from "./Form";
 
 function Dialog() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -40,37 +41,7 @@ function Dialog() {
 
       <dialog ref={dialogRef} onKeyDown={onEscapeKeyPressed} className="modal">
         <div className="modal-box">
-          <form action="/api/messages" method="post">
-            <div className="my-1">
-              <label htmlFor="text" className="form-control w-full max-w-xs">
-                Text
-                <input
-                  required
-                  type="text"
-                  name="text"
-                  id="text"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="user" className="form-control w-full max-w-xs">
-                User
-                <input
-                  required
-                  type="text"
-                  name="user"
-                  id="user"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </label>
-            </div>
-
-            <button type="submit" className="btn btn-info mt-1.5">
-              Submit
-            </button>
-          </form>
+          <Form />
         </div>
       </dialog>
     </div>
