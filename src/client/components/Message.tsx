@@ -6,9 +6,9 @@ const MessageSchema = z.object({
   added: z.string().date(),
 });
 
-type Message = z.infer<typeof MessageSchema>;
+export type MessageObject = z.infer<typeof MessageSchema>;
 
-function Message({ text, user, added }: Message) {
+function Message({ text, user, added }: MessageObject) {
   return (
     <div className="bg-gray-100 rounded my-5 p-3">
       <p className="text-lg">{text}</p>

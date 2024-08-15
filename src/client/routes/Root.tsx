@@ -1,6 +1,6 @@
 import React from "react";
 
-import Message from "../components/Message";
+import Message, { MessageObject } from "../components/Message";
 import Dialog from "../components/Dialog";
 import NetworkError from "../components/NetworkError";
 import Loading from "../components/Loading";
@@ -17,7 +17,7 @@ export async function loader() {
 }
 
 function Root() {
-  const [messages, setMessages] = React.useState<Message[]>([]);
+  const [messages, setMessages] = React.useState<MessageObject[]>([]);
   const [error, setError] = React.useState<Error | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
 
