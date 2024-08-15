@@ -12,8 +12,7 @@ export async function loader() {
     throw new Error(response.statusText);
   }
 
-  const messages = await response.json();
-  return messages;
+  return await response.json();
 }
 
 function Root() {
