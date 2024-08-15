@@ -17,9 +17,11 @@ export default function ErrorPage() {
   console.error(errorMsg);
 
   return (
-    <div>
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occured.</p>
+    <div className="flex flex-col items-center justify-center min-h-screen w-full">
+      <h1 className="font-bold text-3xl">Oops!</h1>
+      <p className="font-medium text-lg">
+        Sorry, an unexpected error has occured.
+      </p>
       <p>
         <i>{errorMsg}</i>
       </p>
