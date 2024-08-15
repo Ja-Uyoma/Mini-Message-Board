@@ -2,8 +2,7 @@ import React from "react";
 
 import Message, { MessageObject } from "../components/Message";
 import Dialog from "../components/Dialog";
-import NetworkError from "../components/NetworkError";
-import Loading from "../components/Loading";
+import { useLoaderData } from "react-router-dom";
 
 export async function loader() {
   const response = await fetch("/api/messages", { method: "GET" });
@@ -16,37 +15,7 @@ export async function loader() {
 }
 
 function Root() {
-  const [messages, setMessages] = React.useState<MessageObject[]>([]);
-  const [error, setError] = React.useState<Error | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const response = await fetch("/api/messages", { method: "GET" });
-
-        if (response.status >= 400) {
-          throw new Error(response.statusText);
-        } else {
-          const result = await response.json();
-          setMessages(result);
-        }
-      } catch (err) {
-        console.error(err);
-        setError(err as Error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchMessages();
-  }, []);
-
-  if (error) {
-    return <NetworkError />;
-  } else if (isLoading) {
-    return <Loading />;
-  }
+  const messages = useLoaderData() as MessageObject[];
 
   return (
     <div className="flex flex-col min-h-screen">
