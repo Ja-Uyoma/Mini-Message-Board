@@ -68,7 +68,9 @@ function Root() {
               />
             ))
           ) : (
-            <p>No messages to display</p>
+            <div className="flex items-center justify-center">
+              <p>No messages to display</p>
+            </div>
           )}
         </>
 
