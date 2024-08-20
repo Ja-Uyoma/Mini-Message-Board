@@ -1,56 +1,40 @@
+import { useLoaderData, Link } from "react-router-dom";
 import Message, { MessageObject } from "./Message";
-import NetworkError from "./NetworkError";
-import Loading from "./Loading";
-import { useState, useEffect } from "react";
 
-export function Messages() {
-  const [messages, setMessages] = useState<MessageObject[]>([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+export async function loader() {
+  const response = await fetch("/api/messages", { method: "GET" });
 
-  useEffect(() => {
-    fetch("/api/messages")
-      .then((res) => {
-        if (res.status >= 400) {
-          throw new Error(res.statusText);
-        } else {
-          return res.json();
-        }
-      })
-      .then((messages) => {
-        setMessages(messages);
-      })
-      .catch((err) => {
-        setError(err);
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (error) {
-    return <NetworkError />;
+  if (!response.ok) {
+    throw new Error(response.statusText);
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  return await response.json();
+}
+
+export function ViewMessages() {
+  const messages = useLoaderData() as MessageObject[];
 
   return (
-    <div>
+    <>
       {messages.length >= 1 ? (
         messages.map((msg, idx) => (
-          <Message
-            key={idx}
-            text={msg.text}
-            user={msg.user}
-            added={msg.added}
-          />
+          <div key={idx} className="mb-4">
+            <Message
+              key={idx}
+              text={msg.text}
+              user={msg.user}
+              added={msg.added}
+            />
+            <Link to={`/messages/${idx + 1}`} className="btn btn-info">
+              View Message
+            </Link>
+          </div>
         ))
       ) : (
-        <p>No messages to display</p>
+        <div className="flex items-center justify-center">
+          <p>No messages to display</p>
+        </div>
       )}
-    </div>
+    </>
   );
 }
