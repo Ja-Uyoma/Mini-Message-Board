@@ -1,8 +1,10 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import multer from "multer";
 import messages from "./messages.js";
 
 const router = express.Router();
+const upload = multer();
 
 router.get("/messages", (req: Request, res: Response) => {
   return res.json(messages);
@@ -11,7 +13,7 @@ router.get("/messages", (req: Request, res: Response) => {
 router.get("/messages/:messageID", (req: Request, res: Response) => {
   const id = Number(req.params.messageID);
 
-  if (id > messages.length) {
+  if (id === 0 || id > messages.length) {
     return res.status(400).json({ message: "Message does not exist" });
   }
 
@@ -20,6 +22,7 @@ router.get("/messages/:messageID", (req: Request, res: Response) => {
 
 router.post(
   "/messages",
+  upload.none(),
   [
     body("text").isString().notEmpty().withMessage("Text cannot be empty!"),
     body("user").isString().notEmpty().withMessage("User cannot be empty!"),
