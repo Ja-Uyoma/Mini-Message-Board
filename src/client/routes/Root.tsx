@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 import Message, { MessageObject } from "../components/Message";
 import { useLoaderData } from "react-router-dom";
@@ -17,6 +17,8 @@ function Root() {
   const messages = useLoaderData() as MessageObject[];
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const [text, setText] = useState("");
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     const modal = dialogRef.current;
@@ -29,6 +31,32 @@ function Root() {
       modal.close();
     }
   }, [isOpen]);
+
+  const onFormSubmitted = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("text", text);
+    formData.append("user", user);
+
+    try {
+      const res = await fetch("/api/messages", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        console.log("Success: ", result);
+        setText("");
+        setUser("");
+        setIsOpen(false);
+      }
+    } catch (err) {
+      console.error("Request failed: ", err);
+      setIsOpen(true);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -68,7 +96,7 @@ function Root() {
             <form
               action="/api/messages"
               method="post"
-              onSubmit={(e) => setIsOpen(false)}
+              onSubmit={onFormSubmitted}
             >
               <div className="my-1">
                 <label htmlFor="text" className="form-control w-full max-w-xs">
@@ -78,6 +106,8 @@ function Root() {
                     name="text"
                     id="text"
                     className="input input-bordered w-full max-w-xs"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                     required
                   />
                 </label>
@@ -91,6 +121,8 @@ function Root() {
                     name="user"
                     id="user"
                     className="input input-bordered w-full max-w-xs"
+                    value={user}
+                    onChange={(e) => setUser(e.target.value)}
                     required
                   />
                 </label>
