@@ -2,6 +2,19 @@
 
 This is an exercise from The Odin Project to create a mini-message board application
 
+## Description
+
+This project creates a message board application wherein users can create and view messages.
+
+### Background
+
+This project is from [The Odin Project](https://www.theodinproject.com/lessons/node-path-nodejs-mini-message-board).
+
+### Features
+
+1. Creating new messages.
+2. Viewing existing messages.
+
 ## Getting Started
 
 ### Installation
@@ -43,6 +56,16 @@ npm run start
 
 3. You can now access the application in your browser at the address `localhost:3000`.
 
+4. To run tests, you can run the following command.
+
+```sh
+npm run test
+```
+
 ## License
 
 This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license. See LICENSE.md for more information.
+
+## Project Status
+
+This project is now feature complete.
