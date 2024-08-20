@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 import Message, { MessageObject } from "../components/Message";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 export async function loader() {
   const response = await fetch("/api/messages", { method: "GET" });
@@ -69,12 +69,17 @@ function Root() {
         <>
           {messages.length >= 1 ? (
             messages.map((msg, idx) => (
-              <Message
-                key={idx}
-                text={msg.text}
-                user={msg.user}
-                added={msg.added}
-              />
+              <div key={idx} className="mb-4">
+                <Message
+                  key={idx}
+                  text={msg.text}
+                  user={msg.user}
+                  added={msg.added}
+                />
+                <Link to={`/messages/${idx + 1}`} className="btn btn-info">
+                  View Message
+                </Link>
+              </div>
             ))
           ) : (
             <div className="flex items-center justify-center">
