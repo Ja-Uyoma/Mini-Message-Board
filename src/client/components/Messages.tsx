@@ -1,10 +1,10 @@
-import Message from "./Message";
+import Message, { MessageObject } from "./Message";
 import NetworkError from "./NetworkError";
 import Loading from "./Loading";
 import { useState, useEffect } from "react";
 
 export function Messages() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<MessageObject[]>([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

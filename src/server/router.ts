@@ -13,7 +13,7 @@ router.get("/messages", (req: Request, res: Response) => {
 router.get("/messages/:messageID", (req: Request, res: Response) => {
   const id = Number(req.params.messageID);
 
-  if (id > messages.length) {
+  if (id === 0 || id > messages.length) {
     return res.status(400).json({ message: "Message does not exist" });
   }
 
